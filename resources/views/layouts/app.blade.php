@@ -18,9 +18,13 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
+
+        <div id="MenuApp"></div>
+
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -57,6 +61,9 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('room.index') }}">Habitaciones</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('booking.create') }}">Reservaciones</a>
                             </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

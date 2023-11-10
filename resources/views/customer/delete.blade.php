@@ -30,6 +30,8 @@
                                 <th>Número Documento</th>
                                 <th>Nombres</th>
                                 <th>Apellidos</th>
+                                <th>Sexo</th>
+                                <th>Dirección</th>
                             </tr>
                         </th>
                         <tr>
@@ -37,6 +39,8 @@
                             <td>{{ $customer->document_identification_number }}</td>
                             <td>{{ $customer->name_one }} {{ $customer->name_two }}</td>
                             <td>{{ $customer->lastname_one }} {{ $customer->lastname_two }}</td>
+                            <td>{{ $customer->gender }}</td>
+                            <td>{{ $customer->address }}</td>
                         </tr>
                     </table>
 

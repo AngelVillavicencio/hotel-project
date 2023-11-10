@@ -50,6 +50,19 @@
                             <input type="text" name="document_identification_number" class="form-control" value="{{ $customer->document_identification_number }}" required>
                         </div>
 
+                        <div class="form-group">
+                            <label for="gender">Sexo *</label>
+                            <select name="gender" class="form-control" required>
+                                <option value="MASCULINO" @if ($customer->gender == 'MASCULINO') selected @endif>MASCULINO</option>
+                                <option value="FEMENINO" @if ($customer->gender == 'FEMENINO') selected @endif>FEMENINO</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Dirección *</label>
+                            <input type="text" name="address" class="form-control" value="{{ $customer->address }}" required>
+                        </div>
+
                         <div class="d-flex" style="gap: 10px">
                             <button type="submit" class="btn btn-primary">Actualizar</button>
                             <a href="{{ route('customer.index') }}" class="btn btn-secondary">Regresar</a>

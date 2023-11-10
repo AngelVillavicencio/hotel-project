@@ -28,6 +28,8 @@
                                 <th>Número Documento</th>
                                 <th>Nombres</th>
                                 <th>Apellidos</th>
+                                <th>Sexo</th>
+                                <th>Dirección</th>
                                 <th>Opciones</th>
                             </tr>
                         </thead>
@@ -38,6 +40,8 @@
                                 <td>{{ $customer->document_identification_number }}</td>
                                 <td>{{ $customer->name_one }} {{ $customer->name_two }}</td>
                                 <td>{{ $customer->lastname_one }} {{ $customer->lastname_two }}</td>
+                                <td>{{ $customer->gender }}</td>
+                                <td>{{ $customer->address }}</td>
                                 <td>
                                     <div style="display: flex; gap: 10px">
                                         <a href="{{ route('customer.edit', ['customer' => $customer]) }}" class="btn btn-primary">Editar</a>

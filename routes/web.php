@@ -45,3 +45,5 @@ Route::get('/habitaciones/{room}/editar', 'RoomController@edit')->name('room.edi
 Route::post('/habitaciones/{room}', 'RoomController@update')->name('room.update');
 Route::get('/habitaciones/{room}/eliminar', 'RoomController@delete')->name('room.delete');
 Route::post('/habitaciones/{room}/eliminar', 'RoomController@destroy')->name('room.destroy');
+
+Route::get('/reservaciones/nuevo', 'BookingController@create')->name('booking.create');

@@ -37,6 +37,8 @@ class CustomerController extends Controller
         $customer->lastname_two = $request->lastname_two;
         $customer->document_identification = $request->document_identification;
         $customer->document_identification_number = $request->document_identification_number;
+        $customer->gender = $request->gender;
+        $customer->address = $request->address;
         $customer->deleted = false;
         $customer->save();
         
@@ -56,6 +58,8 @@ class CustomerController extends Controller
         $customer->lastname_two = $request->lastname_two;
         $customer->document_identification = $request->document_identification;
         $customer->document_identification_number = $request->document_identification_number;
+        $customer->gender = $request->gender;
+        $customer->address = $request->address;
         $customer->save();
         
         return redirect()->route('customer.index')->with('alert_message','Se actualizó el cliente.');
