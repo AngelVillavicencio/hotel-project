@@ -23,8 +23,16 @@
 <body>
     <div id="app">
 
-        <div id="MenuApp"></div>
+        @auth
+            <div id="MenuApp" 
+                 data-customer-index="{{ route('customer.index') }}"
+                 data-product-index="{{ route('product.index') }}"
+                 data-room-index="{{ route('room.index') }}"
+                 data-booking-create="{{ route('booking.create') }}"
+            ></div>
+        @endauth
 
+        @auth
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -87,6 +95,7 @@
                 </div>
             </div>
         </nav>
+        @endauth
 
         <main class="py-4">
             @yield('content')

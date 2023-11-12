@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 import { Menu } from 'antd';
@@ -15,16 +15,18 @@ function getItem(label, key, icon, children, type) {
 
 const items = [
   
-  getItem('Administrador', 'sub1', <MailOutlined />, [
+  getItem('Administrador', 'adminMenu', <MailOutlined />, [
     getItem('Dashboard', 'sub11'),
-    getItem('Productos', 'sub12'),
+    getItem('Productos', 'productIndex'),
+    getItem('Habitaciones', 'roomIndex'),
+    getItem('Clientes', 'customerIndex'),
     getItem('Suministros', 'sub13'),
   ]),
 
   getItem('Recepción Hotel', 'sub2', <AppstoreOutlined />, [
-    getItem('Registrar Cliente', '5'),
-    getItem('Realizar Reserva', '6'),
-    getItem('Reservas', '7'),
+    getItem('Registrar Cliente', 'sub21'),
+    getItem('Realizar Reserva', 'bookingCreate'),
+    getItem('Reservas', 'sub23'),
   ]),  
 
   getItem('Recepción Lavandería', 'sub3', <AppstoreOutlined />, [
@@ -33,10 +35,66 @@ const items = [
   ]),
 ];
 
+const customerIndex = document.getElementById('MenuApp').getAttribute('data-customer-index');
+const productIndex = document.getElementById('MenuApp').getAttribute('data-product-index');
+const roomIndex = document.getElementById('MenuApp').getAttribute('data-room-index');
+const bookingCreate = document.getElementById('MenuApp').getAttribute('data-booking-create');
+
 const MenuApp = () => {
+
+  const [menuSelected, setMenuSelected] = useState("productIndex");
+  const [menuOpenSelected, setMenuOpenSelected] = useState("adminMenu");
   
+  useEffect(() => {
+
+    var urlActual = window.location.href;
+    var tempMenuSelected = "";
+
+    if (urlActual === customerIndex) {
+      tempMenuSelected = "customerIndex";
+    }
+
+    if (urlActual === productIndex) {
+      tempMenuSelected = "productIndex";
+    }
+
+    if (urlActual === roomIndex) {
+      tempMenuSelected = "roomIndex";
+    }
+
+    if (urlActual === bookingCreate) {
+      tempMenuSelected = "bookingCreate";
+    }
+
+    for (let index = 0; index < items.length; index++) {
+      const element = items[index];
+      const children = element.children;
+      
+      for (let index = 0; index < children.length; index++) {
+        const elementChildren = children[index];
+        if (elementChildren.key === tempMenuSelected) {
+          setMenuOpenSelected(element.key);
+        }
+      }
+    }
+
+    setMenuSelected(tempMenuSelected);
+
+  }, []);
+
   const onClick = (e) => {
-    console.log('click ', e);
+    if (e.key === "productIndex") {
+      window.location.href = productIndex;
+    }
+    if (e.key === "roomIndex") {
+      window.location.href = roomIndex;
+    }
+    if (e.key === "customerIndex") {
+      window.location.href = customerIndex;
+    }
+    if (e.key === "bookingCreate") {
+      window.location.href = bookingCreate;
+    }
   };
 
   return (
@@ -45,8 +103,8 @@ const MenuApp = () => {
       style={{
         width: 256,
       }}
-      defaultSelectedKeys={['1']}
-      defaultOpenKeys={['sub1']}
+      selectedKeys={[menuSelected]}
+      openKeys={[menuOpenSelected]}
       mode="inline"
       items={items}
     />
