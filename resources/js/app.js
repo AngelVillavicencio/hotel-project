@@ -15,3 +15,4 @@ require('./bootstrap');
 
 require('./components/MenuApp');
 require('./components/BookingForm');
+require('./components/LoginForm');

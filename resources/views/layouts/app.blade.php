@@ -21,7 +21,7 @@
 
 </head>
 <body>
-    <div id="app">
+    <div style="display: flex; flex-direction: row; gap: 20px">
 
         @auth
             <div id="MenuApp" 
@@ -29,77 +29,20 @@
                  data-product-index="{{ route('product.index') }}"
                  data-room-index="{{ route('room.index') }}"
                  data-booking-create="{{ route('booking.create') }}"
-            ></div>
+                 data-logout={{ route('logout') }}
+                 data-login={{ route('login') }}>
+            </div>
         @endauth
 
-        @auth
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
+        <main>
+            <div>
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('customer.index') }}">Clientes</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('product.index') }}">Productos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('room.index') }}">Habitaciones</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('booking.create') }}">Reservaciones</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
             </div>
-        </nav>
-        @endauth
-
-        <main class="py-4">
             @yield('content')
         </main>
+
     </div>
 </body>
 </html>
