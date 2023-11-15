@@ -21,7 +21,7 @@
 
 </head>
 <body>
-    <div style="display: flex; flex-direction: row; gap: 20px">
+    <div style="display: flex; flex-direction: row;">
 
         @auth
             <div id="MenuApp" 
@@ -34,14 +34,12 @@
             </div>
         @endauth
 
-        <main>
-            <div>
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
+        <div id="MainContainer">
+            <div id="TopBar">
+                <a class="top-bar-title" href="{{ url('/') }}">{{ config('app.name', 'Laravel') }}</a>
             </div>
             @yield('content')
-        </main>
+        </div>
 
     </div>
 </body>

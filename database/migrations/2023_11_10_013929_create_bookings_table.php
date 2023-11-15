@@ -24,6 +24,7 @@ class CreateBookingsTable extends Migration
             $table->decimal('price');
             $table->string('payment_type');
             $table->string('observations', 500);
+            $table->boolean('deleted');
             $table->timestamps();
         });
     }
