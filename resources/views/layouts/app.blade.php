@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,17 +21,15 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 </head>
+
 <body>
     <div style="display: flex; flex-direction: row;">
 
         @auth
-            <div id="MenuApp" 
-                 data-customer-index="{{ route('customer.index') }}"
-                 data-product-index="{{ route('product.index') }}"
-                 data-room-index="{{ route('room.index') }}"
-                 data-booking-create="{{ route('booking.create') }}"
-                 data-logout={{ route('logout') }}
-                 data-login={{ route('login') }}>
+            <div id="MenuApp" data-customer-index="{{ route('customer.index') }}"
+                data-product-index="{{ route('product.index') }}" data-room-index="{{ route('room.index') }}"
+                data-booking-create="{{ route('booking.create') }}" data-logout={{ route('logout') }}
+                data-login={{ route('login.form') }}>
             </div>
         @endauth
 
@@ -43,4 +42,5 @@
 
     </div>
 </body>
+
 </html>
